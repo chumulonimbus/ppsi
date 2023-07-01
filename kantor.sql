@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 06, 2023 at 04:02 PM
+-- Generation Time: Jul 01, 2023 at 09:47 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.10
 
@@ -74,15 +74,42 @@ CREATE TABLE `karyawan` (
   `status_kerja` varchar(30) NOT NULL,
   `status` varchar(255) DEFAULT NULL,
   `tanggungan` varchar(255) DEFAULT NULL,
-  `no_telp` varchar(30) NOT NULL
+  `no_telp` varchar(30) NOT NULL,
+  `role` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `karyawan`
 --
 
-INSERT INTO `karyawan` (`nip`, `nama`, `username`, `email`, `password`, `alamat`, `jenis_kelamin`, `tempat_lahir`, `tanggal_lahir`, `status_kerja`, `status`, `tanggungan`, `no_telp`) VALUES
-(1, 'herdha nur', 'herdha', 'herdha@gmail.com', 'herdha123', 'jogja', 'laki-laki', 'sleman', '2023-06-04', 'aktif', 'kontrak', '0', '081150021000');
+INSERT INTO `karyawan` (`nip`, `nama`, `username`, `email`, `password`, `alamat`, `jenis_kelamin`, `tempat_lahir`, `tanggal_lahir`, `status_kerja`, `status`, `tanggungan`, `no_telp`, `role`) VALUES
+(1, 'herdha nur', 'herdha', 'herdha@gmail.com', 'herdha123', 'jogja', 'laki-laki', 'sleman', '2023-06-04', 'aktif', 'kontrak', '0', '081150021000', 'karyawan'),
+(2, 'administrator', 'admin', 'admin@gmail.com', 'admin123', 'jogja', 'laki-laki', 'jogja', '2023-06-30', 'kontrak', 'menikah', '0', '08123456789', 'admin'),
+(3, 'herdha 2', 'herdha2', 'herdha2@gmail.com', 'herdha123', 'jogja', 'laki-laki', 'jogja', '2023-06-30', '', 'kontrak', '0', '08123456789', 'karyawan');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `laporanpresensi`
+--
+
+CREATE TABLE `laporanpresensi` (
+  `idreport` int(11) NOT NULL,
+  `nama_laporan` varchar(255) NOT NULL,
+  `tanggalMulai` date NOT NULL,
+  `tanggalAkhir` date NOT NULL,
+  `total_masuk` int(11) NOT NULL,
+  `total_ijin` int(11) NOT NULL,
+  `total_sakit` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `laporanpresensi`
+--
+
+INSERT INTO `laporanpresensi` (`idreport`, `nama_laporan`, `tanggalMulai`, `tanggalAkhir`, `total_masuk`, `total_ijin`, `total_sakit`) VALUES
+(11, 'test', '2023-06-30', '2023-06-30', 1, 1, 0),
+(12, 'test', '2023-06-30', '2023-07-01', 3, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -110,7 +137,7 @@ CREATE TABLE `penilaian` (
 CREATE TABLE `presensi` (
   `id_presensi` int(11) NOT NULL,
   `nip` int(11) NOT NULL,
-  `tanggal` varchar(255) NOT NULL,
+  `tanggal` date NOT NULL,
   `path_foto` varchar(255) DEFAULT NULL,
   `status_presensi` varchar(11) NOT NULL,
   `keteranganIjin` varchar(255) DEFAULT NULL
@@ -121,11 +148,10 @@ CREATE TABLE `presensi` (
 --
 
 INSERT INTO `presensi` (`id_presensi`, `nip`, `tanggal`, `path_foto`, `status_presensi`, `keteranganIjin`) VALUES
-(1, 1, '2023-06-06', NULL, 'hadir', NULL),
-(19, 1, '06-06-2023', '', 'Hadir', ''),
-(20, 1, '06-06-2023', '', 'Ijin', 'ijin'),
-(21, 1, '06-06-2023', '1.png', 'Sakit', ''),
-(22, 1, '06-06-2023', '', 'Hadir', '');
+(30, 1, '2023-06-30', '', 'Hadir', ''),
+(31, 3, '2023-06-30', '', 'Ijin', 'keperluan mendadak'),
+(32, 1, '2023-07-01', '', 'Hadir', ''),
+(33, 3, '2023-07-01', '', 'Hadir', '');
 
 --
 -- Indexes for dumped tables
@@ -150,6 +176,12 @@ ALTER TABLE `gaji`
 --
 ALTER TABLE `karyawan`
   ADD PRIMARY KEY (`nip`);
+
+--
+-- Indexes for table `laporanpresensi`
+--
+ALTER TABLE `laporanpresensi`
+  ADD PRIMARY KEY (`idreport`);
 
 --
 -- Indexes for table `penilaian`
@@ -185,7 +217,13 @@ ALTER TABLE `gaji`
 -- AUTO_INCREMENT for table `karyawan`
 --
 ALTER TABLE `karyawan`
-  MODIFY `nip` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `nip` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `laporanpresensi`
+--
+ALTER TABLE `laporanpresensi`
+  MODIFY `idreport` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `penilaian`
@@ -197,7 +235,7 @@ ALTER TABLE `penilaian`
 -- AUTO_INCREMENT for table `presensi`
 --
 ALTER TABLE `presensi`
-  MODIFY `id_presensi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id_presensi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- Constraints for dumped tables

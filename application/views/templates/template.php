@@ -35,13 +35,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Employee</title>
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/mdi/css/materialdesignicons.css">
+    <link rel="stylesheet" href="<?= base_url('assets/bootstrap/css/bootstrap.min.css')?>">
+    <link rel="stylesheet" href="<?= base_url('assets/mdi/css/materialdesignicons.css')?>">
 </head>
 <style>
     @font-face {
         font-family: 'Poppins';
-        src:  url('assets/font/poppins/Poppins-Regular.ttf');
+        src:  url('<?= base_url('assets/font/poppins/Poppins-Regular.ttf')?>');
     }
     html, body{
         font-family: 'Poppins' !important;
@@ -156,6 +156,9 @@
     .profile-container {
         position: relative;
     }
+    .dropdown-toggle:after{
+        display: none;
+    }
 </style>
 <body>
     <div class="container-scroller">
@@ -219,9 +222,9 @@
                                 </div>                         
                             </a>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
-                                <button class="dropdown-item" type="button">
+                                <a href="<?php echo base_url('setting'); ?>" class="dropdown-item" type="button">
                                     <i class="mdi mdi-account mr-3"></i>Profile
-                                </button>
+                                </a>
                                 <a href="<?php echo base_url('login/logout'); ?>" class="dropdown-item" type="button">
                                     <i class="mdi mdi-logout-variant mr-3"></i>Logout
                                 </a>
@@ -235,8 +238,8 @@
             </div>
         </div>
     </div>
-    <script src="assets/jquery/jquery.js"></script>
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="<?= base_url('assets/jquery/jquery.js')?>"></script>
+    <script src="<?= base_url('assets/bootstrap/js/bootstrap.bundle.min.js')?>"></script>
     <script>
         // $('.sidebar-nav li a').on('click', function(){
         //     $('.sidebar-nav li a.active').removeClass('active')
