@@ -43,10 +43,10 @@
             <label for="inputPassword">Password</label>
         </div>
         <button id="signin" class="btn btn-lg btn-primary btn-block mb-2" type="submit">Sign in</button>
-        <div class="d-flex">
-            <a href="<?php echo base_url('resetpass') ?>" class="mr-auto">Forgot password</a>
-            <a href="<?php echo base_url('register') ?>">Create account</a>
-        </div>
+        <!-- <div class="d-flex">
+            <a href="<?php //echo base_url('resetpass') ?>" class="mr-auto">Forgot password</a>
+            <a href="<?php //echo base_url('register') ?>">Create account</a>
+        </div> -->
         <p class="mt-5 mb-3 text-muted text-center">&copy; 2023</p>
     </form>
 

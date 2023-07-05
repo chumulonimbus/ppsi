@@ -14,9 +14,7 @@ class Dashboard extends MX_Controller{
 			'nip' => $id,
         );
         $dataUser['a'] = $this->mdashboard->getData("karyawan",$where);
-        // $array = json_decode(json_encode($dataUser), true);
-        // print_r($dataUser);
-        // $this->load->view('dashboard',$dataUser);
+        $dataUser['b'] = $this->mdashboard->getAllData();
         $this->template->write_view('content', 'dashboard', $dataUser, TRUE);
         $this->template->render();
     }

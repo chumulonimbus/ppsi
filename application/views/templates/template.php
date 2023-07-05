@@ -190,6 +190,13 @@
                             <i class="mdi mdi-clipboard-text mr-3"></i>Penilaian
                         </a>
                     </li>
+                    <?php if($this->session->userdata("role")=='admin'){?>
+                    <li>
+                        <a id="kelolaKaryawan" href="#" class="pr-0">
+                            <i class="mdi mdi-account mr-3"></i>Kelola Karyawan
+                        </a>
+                    </li>
+                    <?php }?>
                     <li>
                         <a id="settings" href="setting" class="pr-0">
                             <i class="mdi mdi-cog mr-3"></i>Settings
@@ -214,7 +221,7 @@
                             <a class="d-flex align-items-centerdropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-expanded="false">
                                 <div class="account mr-3 text-right">
                                     <p class="mb-0" style="color: #515151; font-size: 15px; font-weight: 700;"><?php echo $this->session->userdata("username"); ?></p>
-                                    <span class="badge badge-pill badge-warning" style="font-weight: inherit">SA</span>
+                                    <span class="badge badge-pill badge-warning" style="font-weight: inherit"><?php echo $this->session->userdata("role"); ?></span>
                                 </div>
                                 <div class="image-profile rounded-circle">
                                     <p class="m-auto text-profile-letter"><?php $uname = $this->session->userdata("username"); $letter = mb_substr($uname, 0, 1); echo $letter; ?></p>
